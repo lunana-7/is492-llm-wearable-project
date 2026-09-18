@@ -62,10 +62,6 @@ nmani7@illinois.edu</th>
 
 ## **Problem Statement & Motivation**
 
-<img src="images/image4.jpg"
-style="width:3.58885in;height:2.68229in"
-alt="A vibrant, busy modern cafÃ© and service environment filled with multiple customers waiting in line and interacting across a long counter with a service employee. The scene conveys a fast-paced, high-volume environment with digital order screens, espresso machines, and multiple customer interactions happening simultaneously, visually illustrating the challenge of remembering customer preferences and managing fast-paced interactions in real time. Clean, modern vector illustration style matching corporate and tech project documentation." />
-
 Employees in cafÃ©s, restaurants, hotels, retail stores, conferences, and
 enterprise service environments often interact with many customers or
 coworkers in a short period of time.
@@ -86,10 +82,6 @@ Current systems require employees to stop working, access a computer or
 mobile device, and manually search for information.  
 = This slows down service and creates inconsistent customer experiences.
 
-<img src="images/image1.jpg"
-style="width:3.6875in;height:2.75in"
-alt="A clean, modern infographic illustration of the ContextLens wearable AI concept. Centered is a sleek pair of programmable smart glasses, connected by glowing digital neural network lines to three surrounding icons/nodes: a computer vision eye symbol representing facial recognition, a speech waveform symbol representing speech recognition, and a contextual data node/brain symbol representing contextual AI memory. The style is professional, clean, and futuristic yet accessible." />
-
 ContextLens addresses this problem by combining programmable glasses,
 computer vision, speech recognition, and contextual AI.
 
@@ -104,8 +96,6 @@ organizations where employees interact with many customers, coworkers,
 or event participants.
 
 ### **Persona 1: Customer-Facing Service Employees**<img src="images/image3.jpg"
-style="width:3.11458in;height:2.30098in"
-alt="A service employee wearing smart glasses in a modern, bright cafÃ© setting, interacting with a friendly customer across a counter. A subtle, futuristic, and friendly digital overlay or augmented reality display appears in the employee&#39;s view, showing non-intrusive contextual information such as a customer name and profile icon, emphasizing privacy and consent." />
 
 Examples include baristas, restaurant staff, hotel employees,
 receptionists, and retail workers.
@@ -121,11 +111,6 @@ They use ContextLens to:
 - Provide faster and more personalized service.
 
 ### **Persona 2: Enterprise Operations and Customer-Experience Managers**
-
-<img src="images/image5.jpg"
-style="width:3.27066in;height:2.43229in"
-alt="A clean, modern infographic illustration of an enterprise manager analyzing a dashboard on a laptop. The dashboard prominently displays analytics and key performance indicators for ContextLens, highlighting charts and gauges for &#39;Lookup Time Reduction&#39; and &#39;Service Efficiency Improvement&#39;. The style matches a professional, clean corporate aesthetic with clear visual metrics." />
-
 *These are the organizational buyers who manage employee productivity,
 customer experience, and internal systems.*
 
@@ -142,10 +127,6 @@ They use ContextLens to:
 - Establish privacy, access-control, and data-retention policies.
 
 ### **Persona 3: Event and Conference Staff**
-
-<img src="images/image2.jpg"
-style="width:2.97917in;height:2.23201in"
-alt="A professional conference staff member at a modern registration desk or networking event wearing subtle smart glasses, interacting with an attendee. A clean, subtle heads-up display overlay appears near the employee&#39;s vision, displaying non-intrusive attendee context: Name: Sarah Chen, Organization: Tech Forward, Role: Product Lead, and Note: Interested in AI research. The aesthetic is clean, modern, and professional, illustrating wearable AI for event context retrieval." />
 
 Event organizers, conference teams, university career fairs, and
 professional networking organizations often manage large numbers of
@@ -166,10 +147,6 @@ They use ContextLens to:
 
 The first commercial version of ContextLens will focus on three primary
 tasks:
-
-<img src="images/image6.jpg"
-style="width:3.39708in;height:2.27604in"
-alt="A clean, modern infographic illustration visualising context and preference retrieval in wearable AI. It shows a sleek smart glasses heads-up display overlay next to a person, cleanly displaying approved context fields: &#39;Role: Product Lead&#39;, &#39;Preference: Iced Espresso&#39;, and a short note field. The visual style is clean, futuristic, professional, and consistent with a lightweight augmented reality interface." />
 
 1.  **Consent-based identity recognition  
     > **The system recognizes enrolled customers, employees, or event
