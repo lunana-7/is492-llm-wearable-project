@@ -1,0 +1,19 @@
+FINISHED:
+python virtual env setup
+basic README.txt
+camera feed loop
+
+TODO:
+basic mediapipe hand/gesture recognition
+detect raised hand (gesture recognition, fingers above wrist)
+map student/desk locations (manual coordiantes, aruco markers, pose tracking)
+llm integration (lecture instruction advice, student question synthesis)
+glasses integration
+
+ISSUES:
+
+IDEAS:
+audio
+associate students/desks with names (manual, attendance qr code)
+track thumbs up/down for true/false question
+zoom integration
