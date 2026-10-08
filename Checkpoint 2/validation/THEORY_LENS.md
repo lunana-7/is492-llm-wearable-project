@@ -59,12 +59,7 @@ Include typical cases (enrolled student, clear view), edge cases (nickname diffe
 
 **Success criterion:** The hybrid demonstrates **complementarity** only if it performs better than *both* human-alone and AI-alone on preselected primary measures (for example, correct consent-respecting name use and response time), **without worsening privacy compliance or interpersonal naturalness**. If it improves accuracy but causes unacceptable delays, distraction, or privacy violations, we should report a trade-off rather than claim complementarity. Thresholds and the Learning Mode should be adjusted using measured results, not assumed effective.
 
-## References and evidence provenance
+## References
 
 - Gonzalez et al. (2026). *Toward a science of human–AI teaming for decision making: A complementarity framework.* *PNAS Nexus*, 5(3), pgag030. https://academic.oup.com/pnasnexus/article/5/3/pgag030/8490283
-- Team Checkpoint 1 presentation: *ContextLens* (initial service-employee concept).
 - Team *Gap Analysis Matrix: ClassHUD System Validation (Interviews 1–4)* (classroom refinement and proposed requirements).
-- Team `interviews.pdf`, Interviews 1–4 (quoted interview evidence).
-
-**Repository follow-up:** Confirm the team's preferred project name (ContextLens or ClassHUD), link specific prompting transcripts in Section 3 when available, and verify the proposed thresholds and privacy controls against actual prototype behavior before claiming implementation.
-
