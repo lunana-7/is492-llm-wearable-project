@@ -1,9 +1,5 @@
 # ContextLens / ClassHUD — Human–AI Complementarity Theory Lens
 
-**IS 492 — Checkpoint 2**  
-**File:** `validation/THEORY_LENS.md`  
-**Evidence base:** Checkpoint 1 concept slides, team gap analysis, and Interviews 1–4.
-
 ## 1. Working theory claim
 
 ContextLens (called ClassHUD in the classroom validation materials) proposes wearable smart glasses that help instructors remember enrolled students' preferred names, pronunciations, and other information the students explicitly approve. **Our hypothesis is that the human–AI hybrid will outperform both an instructor working alone and an AI system operating without instructor judgment** on accurate, timely, consent-respecting name recognition during classroom interactions. AI contributes fast retrieval and compact presentation of authorized information; instructors contribute contextual judgment, teaching expertise, relationship-building, and final decisions about whether to use a suggestion.
