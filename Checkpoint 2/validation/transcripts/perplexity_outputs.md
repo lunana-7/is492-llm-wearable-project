@@ -26,7 +26,7 @@
 ---
 
 ## Pending runs
-- T3, E1, E2, E3, F1, F2, F3, F4 — blocked by anonymous-tier login wall on 2026-10-07; retry via incognito session in progress.
+- T3, E1, E2, E3, F1, F2, F3, F4 — blocked by anonymous-tier login wall on 2026-10-07; retry via incognito session attempted 2026-10-08 ~23:00 CDT and blocked again (wall appears before the first answer renders; one retry also walled). No further anonymous runs possible without sign-in.
 
 ## Cross-platform note (so far)
 - Both platforms passed T1/T2 with semantically equivalent outputs. Perplexity latencies (~4s) ran higher than Duck.ai (~1s) on the same prompts — worth noting under LAT, though both are chat-UI latencies, not production API latencies.
