@@ -36,6 +36,3 @@ My validation work for Checkpoint 2 ran through interviews rather than prompting
 - **Assumption shift I owned:** I started CP2 thinking the value was recognition itself. Both interviews reframed it: the value is the feeling of being known, and the professor's visible effort is part of the product. A silent lookup that replaces effort is worse than no tool. This is documented as A2 in the opportunity framing.
 - **What I would test next:** My evidence is student-only (2 interviews, both acquaintances — politeness bias possible). The professor perspective is the biggest gap: do professors actually want cards, or would they find them distracting? That is CP3 work, along with calibrating the confidence thresholds the design spec proposes but does not validate.
 - **Open questions I could not close:** FERPA implications of professor-accessible student profiles; who exactly can see the access log; whether "bias toward opted-in students" (one ambiguous answer) means anything we should design for.
-
----
-*Drafted from interview notes (aman_interview_1.md, aman_interview_2.md), OPPORTUNITY_FRAMING.md, and DESIGN_SPEC.md. Aman: please review and edit before submission.*
