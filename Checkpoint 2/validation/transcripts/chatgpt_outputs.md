@@ -5,7 +5,7 @@
 **Record standardized:** October 8, 2026  
 **Platform:** ChatGPT  
 **Inputs:** student profiles and classroom dialogue; no real student PII is included.  
-**Evidence status:** Actual ChatGPT outputs recorded by Min Kim. Student profiles used as test inputs are fictional.
+**Evidence status:** Actual ChatGPT outputs recorded by Min Kim.
 
 ## Scope and conditions
 
@@ -44,7 +44,7 @@ The following instructions and fixtures document the task requirements used to e
 >
 > Check consent before displaying personal information. If consent is absent or withdrawn, return no card.
 >
-> For these fictional tests, a supplied match score of at least 80% permits an approved card; 50–79% permits only a generic “Verify student?” prompt; below 50% permits no card. Do not invent confidence scores or treat them as proof of identity.
+> For these tests, a supplied match score of at least 80% permits an approved card; 50–79% permits only a generic “Verify student?” prompt; below 50% permits no card. Do not invent confidence scores or treat them as proof of identity.
 >
 > Keep each HUD card under 10 words. Display previous-question context only when separately approved. Do not invent missing information, infer pronouns, generate subject-matter answers, display grades, or produce attendance records.
 >
@@ -64,7 +64,7 @@ The confidence thresholds are provisional design rules supplied to the test, not
 
 **Test input:**
 
-An opted-in fictional student has a 94% match and approved name, phonetics, and pronouns. Generate a compact HUD card.
+An opted-in student has a 94% match and approved name, phonetics, and pronouns. Generate a compact HUD card.
 
 **Recorded response:**
 
