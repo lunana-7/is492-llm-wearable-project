@@ -2,7 +2,7 @@
 
 **Project:** ClassHUD / ContextLens  
 **Report owner:** Min Kim  
-**Record standardized:** October 9, 2026  
+**Record standardized:** October 8, 2026  
 **Platform named in source:** Claude  
 **Observed run date:** Not recorded; the source states that no experiment was conducted.  
 **Model/version:** Not recorded.  
