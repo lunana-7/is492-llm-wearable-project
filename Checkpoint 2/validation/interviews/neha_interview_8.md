@@ -1,4 +1,4 @@
-## Interviewee 6 — First-Year Psychology Student
+## Interviewee 8 — First-Year Psychology Student
 
 **Profile:** First-year psychology student; introductory lectures of approximately 150–250 students and discussion sections of 18–25 students. Values personal interactions and is cautious about AI in education.
 
