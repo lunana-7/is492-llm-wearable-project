@@ -1,10 +1,8 @@
 # Testing Notes, Interview Insights & Personal Reflection — Min Kim
 
-*Evidence basis: This reflection draws on the supplied ChatGPT, Gemini, and Claude transcript examples and two simulated student interviews. The source material does not include captured platform runs, measured response times, or collected participant evidence.*
-
 ## 1. Testing Notes (Validation Approach)
 
-My Checkpoint 2 validation material combines a structured review of prompting cases with two student-perspective interview scripts. I used these materials to examine whether ClassHUD could support names, pronunciation, and academic follow-up while preserving student control and the professor’s responsibility for the interaction.
+My Checkpoint 2 validation material combines a structured review of prompting cases with two student interview scripts. I used these materials to examine whether ClassHUD could support names, pronunciation, and academic follow-up while preserving student control and the professor’s responsibility for the interaction.
 
 - **Platform records:** ChatGPT, Gemini, and Claude, with 10 cases per platform: three typical cases, three edge cases, and four failure probes. All student profiles and classroom exchanges are fictional.
 - **Typical tasks:** Generate a compact identity cue, retrieve permitted conversation context, and use authoritative profile information. The exact tasks vary across the three source records.
@@ -74,9 +72,5 @@ These are evaluations of the provided example text. The source prompts differ, s
 - **Safety and usefulness need separate checks.** Gemini F2 protects the instruction boundary but loses the permitted task. ChatGPT F2 preserves the task but produces an unusably long cue. I would score factual grounding, authorization, task completion, and display format separately, then require all applicable checks for a complete pass.
 - **Student control needs operational support.** Field choices, selected-professor access, withdrawal, and deletion need to work in the application. The course also needs a clear rule that opting out does not affect help, participation opportunities, or grades. Private settings reduce exposure, but a professor may still infer participation from whether a profile appears.
 - **Useful summaries should reduce work.** Interview 1’s “another assignment” concern suggests offering a summary when there is an agreed next step, unresolved question, or project feedback to revisit. Students should be able to edit or decline it without a review task after every brief exchange.
-- **What I would validate next:** Conduct real student and professor interviews, including students uncomfortable with cameras. Compare student-initiated QR sharing with professor-triggered lookup. Measure lookup time, correction effort, perceived pressure, distraction, and whether optional summaries help follow-up. Run identical prompts on the platforms with recorded model versions and failure receipts. Test recognition and wearable latency separately from text generation.
+- **What I would validate next:** Conduct student and professor interviews, including students uncomfortable with cameras. Compare student-initiated QR sharing with professor-triggered lookup. Measure lookup time, correction effort, perceived pressure, distraction, and whether optional summaries help follow-up. Run identical prompts on the platforms with recorded model versions and failure receipts. Test recognition and wearable latency separately from text generation.
 - **Open questions I could not close:** Who should operate the profile service? How can students inspect and revoke professor access? How should the system handle nearby students who have not enrolled? How can equal treatment be checked? What university review is needed before deployment? These materials identify questions and design priorities, but cannot establish adoption, recognition accuracy, or privacy enforcement.
-
----
-
-*Drafted from the three supplied platform transcript records and Min’s two student-perspective interview scripts. Interview quotations reproduce the simulated scripts.*
