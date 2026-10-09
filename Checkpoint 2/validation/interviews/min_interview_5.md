@@ -1,54 +1,54 @@
-**Min’s Speed-Dating Interview #1: Conference/Event Worker**
+**Min’s Speed-Dating Interview #1: Student Perspectives on Professor Recognition Glasses**
 
-**Participant background:** Two years staffing university career fairs and conferences  
-**Format:** Simulated 15-minute interview using three storyboard frames
+**Participant background:** Fictional second-year undergraduate; lectures of approximately 80–120 students and discussion sections of 20–30  
+**Format:** Simulated 15-minute interview using three storyboard frames. Responses are illustrative, not collected participant evidence.
 
 **Background**
 
-**Min:** What events have you worked, and how many people do you typically interact with?  
-**Participant:** “Mostly check-in and on-site guidance. On a busy shift, I might talk to 80 to 100 people. Remembering everyone’s name is difficult.”
+**Min:** How large are your classes, and do your professors usually know your name?  
+**Participant:** “My discussion instructors usually recognize me, but professors in large lectures rarely know my name. Sometimes I return to office hours and have to explain what we discussed last time.”
 
-**Frame 1: Correct attendee information**
+**Frame 1: Correct student information**
 
-**Min:** How useful would someone’s name, organization, and previous conversation notes be?  
-**Participant:** “Useful when someone comes back, because I wouldn’t have to repeat questions. If they’re just asking for directions, I probably wouldn’t need it.”
+**Min:** How useful would it be if your professor could see your name, current project, and previous questions?  
+**Participant:** “Useful during office hours, especially when we’re continuing a conversation. They wouldn’t have to ask me to explain everything again. During a regular lecture, I probably wouldn’t need it.”
 
-**Min:** What information would you want, and what would be too much?  
-**Participant:** “Name, organization, why they’re visiting, and any follow-up I promised. Phone numbers, social media, and personal conversations would be unnecessary.”
+**Min:** What information would you be comfortable sharing, and what would be too much?  
+**Participant:** “My name, pronunciation, current project, and questions I choose to share. Grades, attendance, social media, and personal conversations would be too much.”
 
-**Min:** Would you worry about treating attendees who opted in differently?  
-**Participant:** “Yes. I might spend more time with someone whose information appears. Everyone should still receive the same basic assistance.”
+**Min:** Would you worry about professors treating students who opted in differently?  
+**Participant:** “Yes. They might remember those students better or give them more attention. Students who don’t participate should still receive the same help.”
 
 **Frame 2: Wrong identification**
 
-**Min:** If you greeted someone by the wrong name, how would you recover?  
-**Participant:** “I’d say, ‘Sorry, I got your name wrong,’ and check their badge. It would be embarrassing, especially as a first impression.”
+**Min:** If the glasses showed the wrong name and your professor used it, what should happen?  
+**Participant:** “They should briefly apologize and ask my name. I’d want to correct the information privately rather than have a discussion about it in front of everyone.”
 
 **Min:** Should the glasses show their best guess or stay silent when uncertain?  
-**Participant:** “Don’t show the name. When I’m busy, I might read it without noticing that it’s uncertain. A message like ‘Check badge’ would be enough.”
+**Participant:** “Don’t show a name. The professor might trust it without noticing the uncertainty. Asking me would be less awkward than confidently calling me someone else.”
 
-**Min:** Would you keep using the glasses after one mistake?  
-**Participant:** “As a reference, yes, but I’d verify before saying someone’s name. If it happened a few more times, I’d probably turn the feature off.”
+**Min:** Would you stay opted in after one mistake?  
+**Participant:** “Probably, if it was corrected quickly. If it kept happening, I’d stop trusting it and turn my profile off.”
 
 **Frame 3: Reviewing conversation summaries**
 
-**Min:** Would you review a two-line summary after every conversation?  
-**Participant:** “Not when there’s a long line. I’d only review conversations that need follow-up. Recording every interaction would create more work.”
+**Min:** Would you review and approve a two-line summary after every conversation with your professor?  
+**Participant:** “Only if there’s something to follow up on, like feedback on a project or a question we didn’t finish. Reviewing every quick conversation would become another assignment.”
 
 **Min:** What would feel off-limits about the camera or summaries?  
-**Participant:** “Attendees not knowing whether they’re being recorded would bother me. Private conversations or AI-generated judgments about people shouldn’t go into the event CRM.”
+**Participant:** “Not knowing whether I’m being recorded would bother me. Private conversations or AI-generated judgments about my personality or ability shouldn’t become part of my student profile.”
 
 **Wrap-up**
 
 **Min:** If you could change one thing, what would it be?  
-**Participant:** “Show the information after I confirm their identity through a badge or QR code. I’d feel more comfortable if I had checked who they were.”
+**Participant:** “Let me share my profile through a QR code during office hours. Then I’d know when my information was being shown, instead of wondering whether the glasses were identifying me across the classroom.”
 
 **Min:** Who would dislike this idea the most?  
-**Participant:** “Attendees who are uncomfortable with cameras. Staff might also dislike it if reviewing summaries becomes another task that piles up.”
+**Participant:** “Students who are uncomfortable with cameras or worried about being monitored. Professors might also dislike it if reviewing summaries creates more work.”
 
 **Key takeaways to validate in real interviews**
 
-- **Value:** Most useful for returning attendees and follow-up conversations.
-- **Trust:** Hide uncertain names and let staff verify identity.
-- **Workload:** Let staff select which conversations to summarize.
-- **Acceptance:** Make recognition and recording clear, with a choice to participate.
+- **Value:** Support repeated academic conversations and follow-up.
+- **Trust:** Hide uncertain identities and allow discreet corrections.
+- **Workload:** Make summaries optional and focused on useful next steps.
+- **Acceptance:** Let students initiate sharing and ensure equal treatment when they opt out.
