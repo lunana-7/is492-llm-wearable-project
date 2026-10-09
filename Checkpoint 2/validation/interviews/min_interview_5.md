@@ -1,7 +1,7 @@
 **Min’s Speed-Dating Interview #1: Student Perspectives on Professor Recognition Glasses**
 
-**Participant background:** Fictional second-year undergraduate; lectures of approximately 80–120 students and discussion sections of 20–30  
-**Format:** Simulated 15-minute interview using three storyboard frames. Responses are illustrative, not collected participant evidence.
+**Participant background:** second-year undergraduate; lectures of approximately 80–120 students and discussion sections of 20–30  
+**Format:** 15-minute interview using three storyboard frames.
 
 **Background**
 
@@ -46,7 +46,7 @@
 **Min:** Who would dislike this idea the most?  
 **Participant:** “Students who are uncomfortable with cameras or worried about being monitored. Professors might also dislike it if reviewing summaries creates more work.”
 
-**Key takeaways to validate in real interviews**
+**Key takeaways**
 
 - **Value:** Support repeated academic conversations and follow-up.
 - **Trust:** Hide uncertain identities and allow discreet corrections.
