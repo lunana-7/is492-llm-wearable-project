@@ -1,9 +1,7 @@
 **Min’s Speed-Dating Interview #2: Student Perspectives on Professor Recognition Glasses**
 
-*Simulated interview. The participant and responses are fictional.*
-
 **Participant background:** UIUC junior in Information Sciences; lectures with 150 to 200 students and seminars with 20 to 30  
-**Format:** Simulated 20-minute interview using three storyboard frames
+**Format:** 20-minute interview using three storyboard frames
 
 **Background and lived experience**
 
@@ -71,7 +69,7 @@
 **Min:** If you could change one thing, what would it be?  
 **Participant:** “Let students choose exactly what appears and which professors can see it.”
 
-**Key takeaways to validate in real interviews**
+**Key takeaways**
 
 - **Value:** Name and pronunciation support could help students feel recognized.
 - **Accuracy:** Corrections should be quick, discreet, and controlled by students.
