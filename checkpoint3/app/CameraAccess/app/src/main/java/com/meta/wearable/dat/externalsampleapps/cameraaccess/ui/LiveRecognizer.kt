@@ -74,9 +74,6 @@ object LiveRecognizer {
             try {
                 val bmp = grab(surface, bw, bh)
                 if (bmp == null) {
-                    candidate = null
-                    streak = 0
-                    DisplayHelper.clear()
                     failures++
                     if (failures >= 3) text = "Frame copy failed"
                 } else {
@@ -91,9 +88,6 @@ object LiveRecognizer {
                     } else {
                         val crop = FaceEmbedder.cropFace(bmp, biggest)
                         if (crop == null) {
-                            candidate = null
-                            streak = 0
-                            DisplayHelper.clear()
                             text = "Face too small"
                         } else {
                             val emb = FaceEmbedder.embed(context, crop)
@@ -102,25 +96,22 @@ object LiveRecognizer {
                             if (name != null && name == candidate) streak++
                             else { candidate = name; streak = 1 }
                             if (person != null && streak >= 3) {
-                                DisplayHelper.show(person.name, person.cardText)
+                                DisplayHelper.show(person.name, person.description)
                                 if (shownAt == 0L) shownAt = System.currentTimeMillis()
-                            } else {
+                            } else if (person == null) {
                                 DisplayHelper.clear()
                             }
                             text = when {
                                 person == null -> "Unknown (best %.2f)".format(score)
                                 streak >= 3 ->
-                                    "${person.name} - ${person.cardText} (%.2f)".format(score)
+                                    "${person.name} - ${person.description} (%.2f)".format(score)
                                 else -> "Checking..."
                             }
                         }
                     }
                 }
             } catch (e: Exception) {
-                candidate = null
-                streak = 0
-                DisplayHelper.clear()
-                text = "Recognition unavailable"
+                text = "Error: ${e.message}"
             }
             delay(500)
         }

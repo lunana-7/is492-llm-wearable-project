@@ -24,7 +24,6 @@ val localProperties =
     }
 
 android {
-  sourceSets.getByName("androidTest").assets.srcDir("../../../tests/fixtures")
   androidResources {
     noCompress += "tflite"
   }
@@ -81,7 +80,6 @@ dependencies {
   implementation(libs.mwdat.camera)
   implementation(libs.mwdat.mockdevice)
   implementation(libs.mwdat.display)
-  debugImplementation("androidx.compose.ui:ui-test-manifest")
   androidTestImplementation(libs.androidx.ui.test.junit4)
   androidTestImplementation(libs.androidx.test.uiautomator)
   androidTestImplementation(libs.androidx.test.rules)

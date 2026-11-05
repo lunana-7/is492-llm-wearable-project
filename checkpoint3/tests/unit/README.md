@@ -19,7 +19,7 @@ The application currently performs recognition and student storage locally, so a
 | UT-05 | Delete a student profile | Student record and associated embedding are removed from local storage |
 | UT-06 | Clear all student profiles | All locally stored roster records are deleted |
 | UT-07 | Test encrypted storage | Student records are encrypted before persistence |
-| UT-08 | Test consent requirement | Enrollment without consent should be blocked by the enrollment gate |
+| UT-08 | Test consent requirement | Enrollment without consent should be blocked once an explicit consent check is implemented |
 | UT-09 | Start and stop recognition | Recognition state changes correctly through phone controls |
 | UT-10 | Test recognition timeout | Recognition stops after the configured timeout |
 | UT-11 | Test consecutive matches | A student name is displayed only after three consecutive matching observations |
@@ -56,12 +56,10 @@ A connected Android device or emulator is required for instrumentation tests.
 
 The test cases above define the planned coverage. They are **not claims that automated tests have already been implemented or passed**.
 
-The Android roster tests now exercise consent enforcement and the reviewed-note lifecycle. Hardware-dependent behavior, including the name appearing on Meta glasses, must be verified through integration testing on compatible hardware.
+Consent enforcement requires additional implementation if it is not currently present in the application. Hardware-dependent behavior, including the name appearing on Meta glasses, must be verified through integration testing on compatible hardware.
 
 ## Checkpoint 3 Testing Goal
 
 Verify that student enrollment, face recognition, local data protection, profile deletion and recognition-session management behave correctly, including unknown-person and error scenarios.
 
 Record actual test results before the final Checkpoint 3 submission.
-
-Min’s speech unit tests, HTTP integration tests and Android roster tests now have executable commands in the [speech guide](../../app/speech/README.md). The enrollment UI and storage call enforce explicit consent. The table above records the broader test plan.

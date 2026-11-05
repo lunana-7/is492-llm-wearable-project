@@ -17,7 +17,7 @@ object FaceEmbedder {
     private var interpreter: Interpreter? = null
     private var inputSize = 160
     private var outputSize = 128
-
+    var lastEmbedding: FloatArray? = null
 
     private fun ensureLoaded(context: Context) {
         if (interpreter != null) return

@@ -13,7 +13,7 @@
 | PixelCopy failures | `ui/LiveRecognizer.kt` status text after repeated failures | Implemented UI status |
 | Recognition loop interval | `delay(500)` in `LiveRecognizer.kt` | Scheduling interval, **not** measured latency |
 | Display refresh suppression | `DisplayHelper.shouldSend()` (15 s) | Implemented |
-| LLM token usage / cost | Local speech service | Logs summary inference milliseconds and Ollama input/output token counts |
+| LLM token usage / cost | No LLM client in inspected source | Not applicable / not implemented |
 
 `LiveRecognizer` can show a recognized name and description in its status string, and `DisplayHelper` uses text-bearing display keys. **Do not collect raw status strings or identifying text in shared logs.**
 
@@ -86,7 +86,15 @@ Never include images, embeddings, names, student IDs, descriptions, voice transc
 
 The inspected CameraAccess application performs **local face embedding inference**, not LLM inference. Therefore there are no LLM input/output tokens or provider API charges to report for this code path. Local compute still consumes phone battery and processing resources.
 
-For the debug speech flow, the laptop runs Whisper and Qwen locally. The service prints one JSON event with model-call duration in milliseconds and Ollama’s input and output token counts. These figures cover the LLM step only. The model has no per-call provider fee. Device energy and hosting costs are unmeasured. HTTP responses distinguish invalid input, missing consent, concurrent requests, and unavailable inference. The handler omits request content from its logs. Keep Ollama debug logging off during demonstrations.
+If the team later integrates a real flashcard-generation LLM, document:
+- Provider/model name and model version
+- Request count, input/output token counts from actual provider responses
+- Per-model pricing source and calculation date
+- Estimated cost = input tokens × input rate + output tokens × output rate
+- Latency, timeout, retries, rate-limit responses and safe fallback
+- Sanitization of student information before prompts are sent externally
+
+**Do not invent token counts, dollar costs, or LLM features that are not integrated.**
 
 ## 7. Demo evidence checklist
 
@@ -95,4 +103,4 @@ For the debug speech flow, the laptop runs Whisper and Qwen locally. The service
 - Verify local roster deletion.
 - Show a sanitized Logcat snippet for a display or model event.
 - Report measured timings only if instrumented and collected.
-- Record any limitations explicitly (voice invocation, provisional threshold, no remote backend, separate laptop speech service).
+- Record any limitations explicitly (voice invocation, provisional threshold, no remote backend, no verified LLM in this module).

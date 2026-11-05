@@ -23,8 +23,6 @@ import android.os.SystemClock
 import android.util.Log
 import android.widget.MediaController
 import android.widget.VideoView
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -86,7 +84,7 @@ fun CapturePreviewScreen(
   ) {
     Box(modifier = modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.92f))) {
       Column(
-          modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp),
+          modifier = Modifier.fillMaxSize().padding(24.dp),
           horizontalAlignment = Alignment.CenterHorizontally,
           verticalArrangement = Arrangement.Center,
       ) {
@@ -106,8 +104,6 @@ fun CapturePreviewScreen(
           }
         }
           val appContext = LocalContext.current
-          var currentEmbedding by remember(preview) { mutableStateOf<FloatArray?>(null) }
-          var consent by remember(preview) { mutableStateOf(false) }
           var faceText by remember(preview) { mutableStateOf("") }
           var nameInput by remember(preview) { mutableStateOf("") }
           var descInput by remember(preview) { mutableStateOf("") }
@@ -118,8 +114,8 @@ fun CapturePreviewScreen(
                   FaceDetectorHelper.detectFaces(
                       preview.bitmap,
                       onResult = { faces ->
-                          if (faces.size != 1) {
-                              faceText = "Use a photo with exactly one consenting person"
+                          if (faces.isEmpty()) {
+                              faceText = "0 face(s) found"
                           } else {
                               try {
                                   val crop = FaceEmbedder.cropFace(preview.bitmap, faces[0])
@@ -127,11 +123,11 @@ fun CapturePreviewScreen(
                                       faceText = "Face too small to match"
                                   } else {
                                       val emb = FaceEmbedder.embed(appContext, crop)
-                                      currentEmbedding = emb
+                                      FaceEmbedder.lastEmbedding = emb
                                       val (person, score) = RosterStore.match(appContext, emb)
-                                      if (person != null) DisplayHelper.show(person.name, person.cardText) else DisplayHelper.clear()
+                                      if (person != null) DisplayHelper.show(person.name, person.description) else DisplayHelper.clear()
                                       faceText = if (person != null)
-                                          "${person.name} - ${person.cardText} (%.2f)".format(score)
+                                          "${person.name} - ${person.description} (%.2f)".format(score)
                                       else
                                           "No match (best %.2f, roster: %d)".format(
                                               score, RosterStore.count(appContext))
@@ -167,16 +163,16 @@ fun CapturePreviewScreen(
                   label = { Text("Description") }, singleLine = true, colors = fieldColors,
                   modifier = Modifier.padding(top = 4.dp)
               )
-              androidx.compose.material3.TextButton(onClick = { consent = !consent }) {
-                  Text(if (consent) "✓ I agree to store my name and face embedding"
-                       else "Tap to consent to storing my name and face embedding")
-              }
+              Text(
+                  text = "Only enroll people who have agreed to it.",
+                  color = Color.LightGray,
+                  modifier = Modifier.padding(top = 4.dp)
+              )
               Button(
-                  enabled = consent && currentEmbedding != null && nameInput.isNotBlank(),
                   onClick = {
-                      val emb = currentEmbedding
-                      if (consent && emb != null && nameInput.isNotBlank()) {
-                          RosterStore.enroll(appContext, nameInput.trim(), descInput.trim(), emb, consent)
+                      val emb = FaceEmbedder.lastEmbedding
+                      if (emb != null && nameInput.isNotBlank()) {
+                          RosterStore.enroll(appContext, nameInput.trim(), descInput.trim(), emb)
                           enrollNote = "Saved ${nameInput.trim()}"
                       } else {
                           enrollNote = "Need a face and a name"

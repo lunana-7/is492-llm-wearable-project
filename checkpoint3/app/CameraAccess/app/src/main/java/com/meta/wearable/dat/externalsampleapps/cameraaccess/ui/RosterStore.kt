@@ -1,16 +1,11 @@
 package com.meta.wearable.dat.externalsampleapps.cameraaccess.ui
 
 import android.content.Context
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import org.json.JSONArray
 import org.json.JSONObject
 
 object RosterStore {
-    class Person(val name: String, val description: String, val embeddings: MutableList<FloatArray>, note: String = "") {
-        var note by androidx.compose.runtime.mutableStateOf(note)
-        val cardText get() = note.ifBlank { description }
-    }
+    class Person(val name: String, val description: String, val embeddings: MutableList<FloatArray>)
 
     // Placeholder. We will set this from your same-person vs different-person numbers.
     var threshold = 0.60f
@@ -33,7 +28,7 @@ object RosterStore {
                 val v = ea.getJSONArray(j)
                 embs.add(FloatArray(v.length()) { k -> v.getDouble(k).toFloat() })
             }
-            people.add(Person(o.getString("name"), o.getString("description"), embs, o.optString("approvedNote")))
+            people.add(Person(o.getString("name"), o.getString("description"), embs))
         }
     }
 
@@ -42,7 +37,6 @@ object RosterStore {
         for (p in people) {
             val o = JSONObject()
             o.put("name", p.name)
-            o.put("approvedNote", p.note)
             o.put("description", p.description)
             val ea = JSONArray()
             for (e in p.embeddings) {
@@ -57,27 +51,12 @@ object RosterStore {
             .edit().putString("data", RosterCrypto.encrypt(arr.toString())).apply()
     }
 
-    fun enroll(context: Context, name: String, description: String, emb: FloatArray, consent: Boolean) {
-        require(consent && name.isNotBlank() && emb.isNotEmpty())
+    fun enroll(context: Context, name: String, description: String, emb: FloatArray) {
         load(context)
         val existing = people.firstOrNull { it.name.equals(name, ignoreCase = true) }
         if (existing != null) existing.embeddings.add(emb)
         else people.add(Person(name, description, mutableListOf(emb)))
         save(context)
-    }
-
-    fun setNote(context: Context, person: Person, note: String): Boolean {
-        load(context)
-        if (person !in people || note.length > 180) return false
-        val before = person.note
-        person.note = note
-        try {
-            save(context)
-        } catch (e: Exception) {
-            person.note = before
-            return false
-        }
-        return true
     }
 
     fun count(context: Context): Int { load(context); return people.size }
