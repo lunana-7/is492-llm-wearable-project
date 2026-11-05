@@ -1,0 +1,9 @@
+{
+  "name": "mwdat-android",
+  "version": "1.0.0",
+  "description": "Git-native DAT SDK guidance for Android development.",
+  "author": {
+    "name": "Meta Wearables"
+  },
+  "mcpServers": "./mcp/dat_docs.json"
+}
