@@ -4,7 +4,7 @@
 
 This Android project is at `checkpoint3/app/CameraAccess/`. Open **that directory** as the Android Studio project root, not the surrounding `checkpoint3/app/` directory.
 
-The project is a Kotlin/Jetpack Compose Android application using the Meta Wearables Device Access Toolkit, ML Kit face detection, and a bundled TensorFlow Lite face-embedding model. The current application stores its enrolled roster locally on the phone; no separate backend server, SQL database, or Python installation is required for this codebase.
+The project is a Kotlin/Jetpack Compose Android application using the Meta Wearables Device Access Toolkit, ML Kit face detection, and a bundled TensorFlow Lite face-embedding model. The current application stores its enrolled roster locally on the phone; recognition runs independently of the optional laptop service. For the CP3 speech demo, also complete [speech setup and USB pairing](speech/README.md).
 
 ## Requirements
 
@@ -119,4 +119,4 @@ Do not commit `.gradle/`, `.idea/`, `.kotlin/`, `build/`, `app/build/`, `local.p
 
 ## Scope and limitations
 
-This document describes the uploaded CameraAccess source, not unverified team features. No external enrollment API, remote SQL/vector database, or LLM endpoint is present in this Android source. If a teammate's flashcard/LLM module is integrated later, add its exact setup, model configuration, inference test and required environment variables here.
+Recognition runs on the phone. The debug roster’s **Record follow-up** action calls Whisper and Ollama over a USB tunnel. See the [speech demo](speech/README.md) for exact commands and the [checkpoint review](../docs/checkpoint-review.md) for verification and remaining hardware checks.

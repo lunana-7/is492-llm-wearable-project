@@ -38,6 +38,11 @@ flowchart TD
     P[Phone controls] --> Q[Start and stop recognition/session]
     Q --> B
     Q --> D
+    S[Consent on selected roster entry] --> T[8 seconds of phone microphone audio]
+    T --> U[USB tunnel to local Whisper]
+    U --> V[Local Qwen selects a transcript quote]
+    V --> W[Student edits, approves or discards]
+    W -->|Approve| R
 ```
 
 **Enrollment path:** A consenting participant is enrolled through the app's roster/enrollment UI. A captured face is embedded locally and saved with a name and description through `RosterStore.enroll()`. The code stores embeddings, not a separate relational profile table. The app source does not establish a Google Form/Sheets synchronization path.
@@ -59,13 +64,13 @@ flowchart TD
 ## What is *not* implemented in the inspected CameraAccess source
 
 - No separate FastAPI/Node backend, SQL database, remote vector store or API-based student enrollment.
-- No verified consent-record schema or explicit persisted consent flag. **Operational consent must be obtained before enrolling a person**; do not claim an enforced consent gate.
-- No verified LLM inference, token-metering pipeline, or flashcard generation endpoint in this Android source.
+- The enrollment screen requires affirmative consent and one valid face. Existing roster entries predate this gate and require reconfirmation for a demo.
+- The debug follow-up action uses local Whisper and Qwen on the paired laptop. Flashcard generation is separate from this speech feature.
 - No verified voice-command launch/stop workflow; `VoiceTrigger.kt` alone is not proof of device invocation.
 - No enforced 1–1.5 m distance check; practical recognition distance depends on lighting, resolution and device conditions.
 - No validated accuracy/false-match benchmark for the provisional `0.60` threshold.
 
-If other team modules implement flashcards or LLM inference, add them to the architecture only after their code is integrated and their real model calls are verified.
+The laptop receives audio for each consented request. The phone retains the approved text in the selected roster entry. See [speech setup](../app/speech/README.md).
 
 ## Design rationale
 

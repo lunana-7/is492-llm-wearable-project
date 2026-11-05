@@ -1,33 +1,11 @@
-# ContextLens — IS 492 Checkpoint 3
+# ContextLens · Checkpoint 3
 
-Folder scaffold and team work allocation for the working implementation and live demo. **No application implementation is included yet.**
+ContextLens helps a professor recall an opted-in student's preferred name and approved context. The Android application matches against the local encrypted roster. Its debug speech action records an optional follow-up, uses Whisper and a local LLM on a USB-paired laptop, and lets the student review the text before sharing it on their card.
 
-Based on the [existing IS 492 repository](https://github.com/lunana-7/is492-llm-wearable-project), its Checkpoint 1 roles and Checkpoint 2 classroom design. Checkpoint 3 deliverables live in this `checkpoint3/` folder; prior checkpoint materials remain in `Checkpoint 1/` and `Checkpoint 2/`. All paths in the assignment notes are relative to `checkpoint3/`.
+- [Build CameraAccess](app/INSTALL.md)
+- [Run the speech models, tests and live demo](app/speech/README.md)
+- [Checkpoint review and team handoff](docs/checkpoint-review.md)
+- [Architecture](docs/architecture.md) · [Observability](docs/observability.md) · [Safety and privacy](docs/safety_privacy.md)
+- [Team assignments](docs/work-assignments.md)
 
-See [work assignments](docs/work-assignments.md) for individual ownership, acceptance criteria, and handoffs.
-
-```text
-app/
-  INSTALL.md
-  .env.example
-  backend/
-  database/
-  frontend/
-  wearables/
-  speech/
-  prompts/
-  scripts/
-docs/
-  architecture.md
-  use-cases.md
-  observability.md
-  safety_privacy.md
-  work-assignments.md
-  presentation/
-tests/
-  unit/
-  integration/
-  fixtures/
-```
-
-Each folder has an assignment README so Git preserves the structure. Runtime dependencies and runnable scripts will be added by the implementation owners once the stack is verified.
+The standalone Android project lives in `app/CameraAccess/`. The sibling SDK sample tree preserves the earlier team contribution.

@@ -26,6 +26,11 @@ fun RosterDialog(onDismiss: () -> Unit) {
     val context = LocalContext.current
     var people by remember { mutableStateOf(RosterStore.all(context)) }
 
+    var selected by remember { mutableStateOf<RosterStore.Person?>(null) }
+    selected?.let { person ->
+        SpeechReviewDialog(person) { selected = null }
+        return
+    }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Enrolled people (${people.size})") },
@@ -43,13 +48,22 @@ fun RosterDialog(onDismiss: () -> Unit) {
                 Text("No one is enrolled.")
             } else {
                 LazyColumn {
-                    items(people) { p ->
+                    items(people, key = { it.name }) { p ->
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(p.name)
+                                if (p.note.isNotBlank()) {
+                                    Text(p.note)
+                                    TextButton(onClick = { RosterStore.setNote(context, p, "") }) {
+                                        Text("Remove follow-up")
+                                    }
+                                }
+                                if (com.meta.wearable.dat.externalsampleapps.cameraaccess.BuildConfig.DEBUG) {
+                                    TextButton(onClick = { selected = p }) { Text("Record follow-up") }
+                                }
                                 Text("${p.description} - ${p.embeddings.size} photo(s)")
                             }
                             IconButton(onClick = {

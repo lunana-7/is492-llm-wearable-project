@@ -1,6 +1,6 @@
 # Checkpoint 3 work assignments
 
-Assignments use the original team roles and CP2 contributions, with Min and Neha’s workstreams swapped at Min’s request. This file assigns work; it does not claim that work is done or send notifications to team members.
+Assignments use the original team roles and CP2 contributions, with Min and Neha’s workstreams swapped at Min’s request. The [implementation review](checkpoint-review.md) records the standalone Android roster and USB speech service that supersede the original backend/database folder plan. This file assigns work; it does not claim that work is done or send notifications to team members.
 
 | Person | Primary ownership | Required handoff / definition of done |
 |---|---|---|
