@@ -31,3 +31,13 @@ The original planned cases map to the new suite as follows.
 | Display failures | Manual M-04/M-07 on compatible hardware |
 
 See [the current results](../integration/RESULTS.md). Passing tests establish only the behavior each test exercises.
+
+## Speech review and persistence
+
+Min’s test_speech_workflow.py contains ten tests covering consent, mismatched approval, discard, transcript changes invalidating drafts, safe edit/save/delete, no-overwrite behavior, unsupported or sensitive summaries, invalid/truncated audio, instruction overrides and empty summaries. Run it with:
+
+```sh
+python3 -m unittest discover -s tests/unit -p 'test_speech_workflow.py'
+```
+
+Install app/speech/requirements.txt first. These tests exercise the production review and validation code. The real models are exercised separately by tests/integration/live_speech.py.

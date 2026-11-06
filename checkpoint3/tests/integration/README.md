@@ -45,6 +45,20 @@ Record actual outcomes, including failures, against the [use-case walkthroughs](
 | M-07 | Force crop/frame failure after a valid candidate | Streak resets and old identity clears | Source-review concern; device check required |
 | M-08 | Close video preview and inspect local cache, then inspect a shared photo | Retention matches the documented behavior | Device/storage audit required |
 | M-09 | Feed malformed/legacy roster data in an isolated test build | Safe error and no unauthorized identity | Loader-hardening work remains |
-| M-10 | Attempt summary save without student approval and simulate service outage | Save blocked, controlled retry | Pending speech/summary integration |
+| M-10 | Attempt summary save without student approval and simulate service outage | Save blocked, controlled retry | Local speech workflow automated; Android integration pending |
 
 For every trial, record commit, date, device/firmware, synthetic trial ID, steps, expected result, actual result, pass/fail and issue owner. The automated suite covers available methods. Missing safeguards remain open requirements.
+
+## Speech service and review integration
+
+From checkpoint3, install app/speech/requirements.txt into the local virtual environment, then run:
+
+```sh
+.venv/bin/python -m unittest discover -s tests/unit -p 'test_speech_workflow.py'
+.venv/bin/python -m unittest discover -s tests/integration -p 'test_speech_service.py'
+.venv/bin/python tests/integration/live_speech.py
+```
+
+The HTTP suite exercises the actual handler and injects model failures for deterministic timeout, invalid-output and retry checks. It also verifies authorization, consent, origins, input types/sizes, concurrency and rate-window expiry. The live smoke requires the service and Ollama running as described in [speech setup](../../app/speech/README.md). It uses actual transcription and summary inference, followed by edited approval, file verification and deletion.
+
+The optional fixture-based CLI demonstration exercises the same normal entry point used for microphone recordings. A physical microphone is still needed to validate actual capture quality. Android owners have a [specific integration handoff](../../docs/speech-integration-handoff.md).

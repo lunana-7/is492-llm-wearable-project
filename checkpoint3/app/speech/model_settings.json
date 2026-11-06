@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "whisper_model": "tiny.en",
+  "whisper_device": "cpu",
+  "whisper_compute_type": "int8",
+  "language": "en",
+  "summary_model": "qwen3:8b",
+  "temperature": 0,
+  "num_predict": 160,
+  "think": false,
+  "max_audio_seconds": 20,
+  "sample_rate": 16000,
+  "max_transcript_characters": 4000,
+  "max_summary_characters": 180,
+  "model_timeout_seconds": 90,
+  "requests_per_minute": 12
+}

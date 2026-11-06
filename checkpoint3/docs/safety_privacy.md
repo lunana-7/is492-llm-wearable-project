@@ -2,7 +2,7 @@
 
 **Owner — Min Kim. Aman implements storage and recognition controls. Neha reviews wording.**
 
-This review covers the current standalone CameraAccess Android application and the separate prompt evaluation package. It distinguishes source-inspected behavior, automated checks and safeguards still requiring implementation. Test execution details belong in [the verification record](../tests/integration/RESULTS.md).
+This review covers CameraAccess, the prompt evaluation package, and Min’s local speech module. It distinguishes source-inspected behavior, automated checks and safeguards still requiring implementation. Test execution details belong in [the verification record](../tests/integration/RESULTS.md).
 
 ## Data and access
 
@@ -36,7 +36,7 @@ The name and description can appear on the phone and glasses. Avoid sensitive de
 2. **Same-name profiles.** Enrollment merges samples by case-insensitive name. Two different people using the same name can share an entry. Distinct identifiers and explicit ownership are needed.
 3. **Stale lens card.** The live loop can retain a prior candidate streak or display during crop/frame failures. Stop recognition if an identity is wrong and verify the lens clears. A fresh successful match alone does not prove the error path is safe.
 4. **Legacy or corrupt storage.** RosterStore attempts to interpret the stored string as plaintext JSON if decryption fails. The encryption test checks ciphertext authentication directly. It does not establish that the whole loading path rejects every malformed or legacy record.
-5. **Approval and speech.** The current shared Android implementation has no reviewed-summary workflow. A completed prompt evaluation must not be presented as a deployed speech/privacy safeguard.
+5. **Approval and speech.** The local speech module implements consent, transcript correction, draft review and explicit approval-only export. Android roster integration still requires the [owner handoff](speech-integration-handoff.md). The terminal’s typed student ID and exported approval fields express supervised demo approval rather than authenticated student identity.
 
 These findings are implementation handoffs to the relevant owners. [Manual checks](../tests/integration/README.md#manual-checks) specify the expected safety behavior and how to record a failure.
 
@@ -47,3 +47,15 @@ Use consenting volunteers and synthetic roster entries. Explain what is captured
 ## Limits of the evidence
 
 Synthetic vectors exercise matching and deletion mechanics. A synthetic bitmap exercises the bundled model's execution path. Neither establishes face-recognition accuracy or fairness. Real-device testing must cover lighting, pose, glasses/masks, unfamiliar participants, disconnects and visible lens state. Record measured outcomes rather than treating source code, fixtures or a planned test as proof of behavior.
+
+## Implemented speech-module safeguards
+
+The [speech module](../app/speech/README.md) uses local Whisper and Qwen. Each microphone session starts with explicit operator-confirmed consent. The client corrects the transcript before summarization, then edits or discards the draft. Approving requires typing the selected pseudonymous student ID.
+
+The API binds to loopback and requires a locally generated owner-only bearer token. It rejects browser-origin requests, missing consent, oversized/invalid audio and malformed request bodies. It serializes inference and admits at most twelve requests per minute. Failure responses offer controlled retry or cancellation. Authentication is for the local client, with application-level student authentication still required for deployment.
+
+Email and digit-based phone patterns are redacted before model input. The prompt requests a short verbatim academic follow-up, the response is schema-validated, and unsupported or contact-bearing quotes are rejected. A common explicit instruction-override pattern triggers abstention. Human review remains necessary for ASR errors, names, spoken numbers, context and sensitive details.
+
+Audio, transcript and unapproved drafts remain in memory. Changing a transcript invalidates its previous draft. Approval publishes a new owner-only JSON file atomically, preserving existing files. The export stores the selected student ID, model quote, edited summary and approval metadata, with no raw audio or transcript. The plaintext file requires deletion after the demonstration. The CLI supports deletion with student-ID confirmation.
+
+The ten workflow tests and six HTTP tests cover these controls and recovery paths. The opt-in live smoke sends the synthetic recording through both actual models, edits and saves the note, verifies its content and deletes it. Refer to [RESULTS.md](../tests/integration/RESULTS.md) for the current run and its scope. Physical microphone capture, Android UI approval and glasses display remain rehearsal/integration checks.

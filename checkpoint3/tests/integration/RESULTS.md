@@ -20,7 +20,7 @@ Run commands and individual method coverage are in [the integration guide](READM
 - The new suite checks method behavior and a real model invocation. It does not measure recognition accuracy from camera images.
 - The stop test checks state and callback behavior. It does not execute the live loop's 30-second/8-second timers or prove that the lens clears.
 - The reload tests reset the singleton and decode SharedPreferences in the same instrumentation process. Cold-start recovery and damaged storage remain separate checks.
-- Consent enforcement, authenticated student controls, term-end deletion, reviewed summaries and service rate-limit recovery remain implementation work.
+- Android consent enforcement, authenticated student controls, term-end deletion and app-to-speech integration remain implementation work. The local speech flow is verified separately below.
 - Physical microphone, glasses registration/display, lighting robustness, stale-card recovery and full demo timing remain unverified in this run.
 - Neha's previously reported eleven live prompt cases are recorded in app/prompts/README.md. This run repeats the four contract tests only.
 - The earlier deleted speech prototype's eight/ten-test reports are excluded from this record.
@@ -28,3 +28,18 @@ Run commands and individual method coverage are in [the integration guide](READM
 ## Before submission
 
 Min coordinates M-01 through M-10 in the integration guide with the component owners. Attach actual device observations and issue owners. Submit only claims supported by the current commit and recorded outcomes.
+
+## Speech-module run on November 5, 2026
+
+| Check | Observed result |
+|---|---|
+| test_speech_workflow.py | 10 tests passed |
+| test_speech_service.py | 6 tests passed |
+| live_speech.py | Actual HTTP → Whisper tiny.en → Qwen3 8B → student edit → approval → private JSON → deletion passed |
+| demo.py normal CLI with synthetic WAV | Consent, transcript review, summary review, exact student-ID approval and deletion completed successfully |
+
+The live fixture returned “I will bring the revised water quality chart to office hours.” The edited smoke saved “Bring the revised chart to office hours.” and then deleted the file. The CLI run independently saved the accepted quote and deleted it through its normal deletion command.
+
+This run used Python 3.12, faster-whisper 1.2.1, CPU int8 Whisper and local qwen3:8b via Ollama. Service logs reported transcription durations of 260 and 181 ms and model-step durations of 4,761 and 547 ms for the smoke and CLI calls. Both model calls reported 159 input tokens and 18 output tokens. These are two synthetic observations with different warm-up state, rather than a latency benchmark. Local inference carries no per-call provider API fee; hardware and energy costs were not measured.
+
+The sixteen automated speech tests include controlled failures at the model boundary. The two live runs use actual model inference. Audio capture used a synthetic WAV in both live runs. Real microphone quality and the team’s Android/glasses integration remain unverified. Existing Android test results above are from the preceding run, with no new Android production changes in this speech addition.
