@@ -2,7 +2,7 @@
 
 **Owner — Neha Manishankar.**
 
-Open [the seven-slide deck](contextlens-cp3.pptx). Speaker notes contain timing, sources and demonstration cues. The deck uses the current phone-based recognition implementation and labels proposed prompt integration and CP4 evaluation.
+The presentation deck is maintained separately from this repository.
 
 | Slide | Presenter | Time |
 |---|---|---|
