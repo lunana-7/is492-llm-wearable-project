@@ -9,7 +9,7 @@ Open [the seven-slide deck](contextlens-cp3.pptx). Speaker notes contain timing,
 | 1 · ContextLens and team | Neha | 0:30 |
 | 2 · Architecture | Aman | 0:45 |
 | 3 · Live enrollment and recognition | Steven | 2:15 |
-| 4 · Live edge cases and recovery | Min | 1:45 |
+| 4 · Live edge cases and recovery | To be assigned | 1:45 |
 | 5 · Technical choices and prompts | Aman + Neha | 0:45 |
 | 6 · Safety | Min | 0:45 |
 | 7 · CP4 benchmark proposal | Neha | 0:45 |

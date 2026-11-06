@@ -6,7 +6,7 @@ Assignments use the original team roles and CP2 contributions, with Min and Neha
 |---|---|---|
 | **Aman Joshi** | `app/backend/`, `app/database/`, `app/scripts/`, `app/INSTALL.md`, `app/.env.example`, architecture and observability docs | Working recognition/profile/session APIs and database; consent enforcement, approved-field retrieval, correction/deletion and retention; measured latency/token/cost/error telemetry; clean-machine setup; backend unit tests. Agree request/response contracts with Steven and Min before integration. |
 | **Steven Wang** | `app/frontend/`, `app/wearables/` | Real capture-to-backend-to-display flow; enrollment/profile editing/deletion; student field toggles and data-access view; high/medium/low-confidence cards; accept/reject/dismiss, session activation, quiet/on-demand controls and learning mode. Handle connection/loading/error states and test UI transitions. Neha reviews UX. |
-| **Min Kim** | `app/speech/`, `tests/`, `docs/safety_privacy.md` | Real consented transcription and LLM summary pipeline; student review/edit/approve before persistence. Own integration suite, safety regression coverage and edge-case demo; each developer supplies component tests. Report actual results and limitations. |
+| **Min Kim** | `app/speech/`, `tests/`, `docs/safety_privacy.md` | Real consented transcription and LLM summary pipeline; student review/edit/approve before persistence. Own integration suite and safety regression coverage; each developer supplies component tests. Report actual results and limitations. |
 | **Neha Manishankar** | `app/prompts/`, `docs/use-cases.md`, `docs/presentation/`; product/UX coordination | Versioned grounded prompts, examples, parameters and output schemas, with Min integrating actual inference. Missing-field, unsupported-claim and injection regression cases. Primary-flow demo script, seven-slide presentation, rehearsal and forum submission; support Steven's UI design. |
 
 ## Scope from Checkpoint 2
@@ -29,7 +29,7 @@ CP2 documents disagree on HUD density (under ten words versus richer cards) and 
 | Slide 1: title, team, repo, problem | Neha | 0:30 |
 | Slide 2: architecture and stack | Aman | 0:45 |
 | Slide 3 + live primary flow | Steven | 2:15 |
-| Slide 4 + live edge cases and recovery | Min | 1:45 |
+| Slide 4 + live edge cases and recovery | To be assigned | 1:45 |
 | Slide 5: technical choices and prompts | Aman + Neha | 0:45 |
 | Slide 6: safety and guardrails | Min | 0:45 |
 | Slide 7: limitations and CP4 evaluation | Neha | 0:45 |
