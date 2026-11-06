@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContextLens cue v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "cue",
+    "reason"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "display",
+        "verify",
+        "hidden",
+        "error"
+      ]
+    },
+    "cue": {
+      "type": "string",
+      "maxLength": 180
+    },
+    "reason": {
+      "enum": [
+        "approved",
+        "uncertain",
+        "low_confidence",
+        "no_consent",
+        "hidden_mode",
+        "missing_fields",
+        "conflict",
+        "unsafe_input",
+        "invalid_input"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "hidden",
+              "error"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cue": {
+            "const": ""
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "verify"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cue": {
+            "const": "Verify student?"
+          }
+        }
+      }
+    }
+  ]
+}

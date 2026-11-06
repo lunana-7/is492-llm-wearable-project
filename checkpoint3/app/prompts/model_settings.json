@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "integration_status": "evaluation_only",
+  "provider": "local_ollama",
+  "model": "qwen3:8b",
+  "temperature": 0,
+  "num_predict": 160,
+  "think": false,
+  "stream": false,
+  "confidence_scale": "explicit_percent_0_to_100",
+  "high_threshold": 80,
+  "verify_threshold": 50,
+  "max_cue_words": 9,
+  "timeout_seconds": 90
+}
