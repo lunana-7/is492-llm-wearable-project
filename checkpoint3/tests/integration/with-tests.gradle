@@ -1,0 +1,8 @@
+// Include Min's tests only for an explicit test invocation.
+gradle.beforeProject { project ->
+    project.plugins.withId("com.android.application") {
+        project.android.sourceSets.getByName("androidTest").java.srcDir(
+            new File(project.rootDir, "../../tests/integration/android")
+        )
+    }
+}

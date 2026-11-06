@@ -1,65 +1,33 @@
-# Unit Tests — CameraAccess (Checkpoint 3)
+# Unit and component tests
 
-**Owner / Assignment:** Min Kim coordinates testing; Aman Joshi is responsible for recognition, local student data storage, consent and deletion tests; Steven handles UI and session-state tests; Neha handles prompt and schema regression tests.
+**Owner — Min Kim coordinates.** Aman owns storage/recognition fixes, Steven owns UI/session fixes, and Neha owns prompt/schema behavior.
 
-## Overview
+## Executable prompt checks
 
-CameraAccess is an Android application that uses Meta AI glasses, ML Kit face detection, TensorFlow Lite face embeddings, and encrypted local student records.
+From `checkpoint3/`:
 
-The application currently performs recognition and student storage locally, so a separate backend or SQL database is not required for these unit tests.
-
-## Test Cases
-
-| Test ID | Test Case | Expected Result |
-|---|---|---|
-| UT-01 | Enroll a student | Student profile and face embedding are saved successfully |
-| UT-02 | Recognize an enrolled student | Matching student is identified when the similarity threshold is satisfied |
-| UT-03 | Recognize an unknown person | No enrolled student name is returned |
-| UT-04 | Test recognition threshold | Matches below the configured threshold are rejected |
-| UT-05 | Delete a student profile | Student record and associated embedding are removed from local storage |
-| UT-06 | Clear all student profiles | All locally stored roster records are deleted |
-| UT-07 | Test encrypted storage | Student records are encrypted before persistence |
-| UT-08 | Test consent requirement | Enrollment without consent should be blocked once an explicit consent check is implemented |
-| UT-09 | Start and stop recognition | Recognition state changes correctly through phone controls |
-| UT-10 | Test recognition timeout | Recognition stops after the configured timeout |
-| UT-11 | Test consecutive matches | A student name is displayed only after three consecutive matching observations |
-| UT-12 | Test display errors | The application handles glasses display failures without crashing |
-
-## Testing Framework
-
-- JUnit for Kotlin unit tests.
-- AndroidX Test for Android-specific behavior.
-- MockK or Mockito for mocking external dependencies, where configured.
-- Android Studio and Gradle for executing tests.
-
-## Running Tests
-
-From `checkpoint3/app/CameraAccess/`:
-
-```bash
-# Windows
-gradlew.bat :app:testDebugUnitTest
-
-# macOS / Linux
-./gradlew :app:testDebugUnitTest
+```sh
+python3 -m pip install -r tests/unit/requirements-prompts.txt
+python3 -m unittest discover -s tests/unit -p 'test_prompt_contract.py'
 ```
 
-Android instrumentation tests, if implemented, can be executed using:
+Four tests validate the output schema and fixtures, reject identity disclosure during uncertainty, reject fabricated deadlines and reject invalid response shapes. The optional live-model command is documented in [the prompt package](../../app/prompts/README.md).
 
-```bash
-./gradlew :app:connectedDebugAndroidTest
-```
+## Android component checks
 
-A connected Android device or emulator is required for instrumentation tests.
+The [Android integration suite](../integration/README.md) executes actual roster, crypto, model and recognition-control methods. Android dependencies and Keystore require a device or emulator. It covers enrollment persistence, encrypted retrieval, known/unknown matching, threshold boundaries, deletion, clear-all, ciphertext tampering, idempotent stop and the bundled embedding model.
 
-## Current Status
+The original planned cases map to the new suite as follows.
 
-The test cases above define the planned coverage. They are **not claims that automated tests have already been implemented or passed**.
+| Planned coverage | Executable evidence or remaining step |
+|---|---|
+| Enrollment and matching | enrollmentPersistsEncryptedAndReloadsForRetrieval |
+| Unknown input and threshold | unknownAndWrongDimensionReturnNoIdentity; thresholdBoundaryIsApplied |
+| Individual and full deletion | deletedEntryStaysDeletedAfterReload; clearAllPersistsEmptyRoster |
+| Encryption | enrollmentPersistsEncryptedAndReloadsForRetrieval; ciphertextTamperingIsRejectedByCrypto |
+| Consent | Explicit enforced-consent behavior remains an implementation gap |
+| Start/stop | stopIsIdempotentAndSignalsSessionOwner |
+| Timeout and three-match streak | Device-dependent LiveRecognizer loop; manual M-01/M-02 |
+| Display failures | Manual M-04/M-07 on compatible hardware |
 
-Consent enforcement requires additional implementation if it is not currently present in the application. Hardware-dependent behavior, including the name appearing on Meta glasses, must be verified through integration testing on compatible hardware.
-
-## Checkpoint 3 Testing Goal
-
-Verify that student enrollment, face recognition, local data protection, profile deletion and recognition-session management behave correctly, including unknown-person and error scenarios.
-
-Record actual test results before the final Checkpoint 3 submission.
+See [the current results](../integration/RESULTS.md). Passing tests establish only the behavior each test exercises.
