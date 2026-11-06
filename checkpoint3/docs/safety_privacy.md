@@ -1,8 +1,30 @@
 # Safety and Privacy
 
-**Owner — Min Kim. Aman implements storage and recognition controls. Neha reviews wording.**
+**Min Kim — speech safeguards and safety testing.**
 
-This review covers CameraAccess, the prompt evaluation package, and Min’s local speech module. It distinguishes source-inspected behavior, automated checks and safeguards still requiring implementation. Test execution details belong in [the verification record](../tests/integration/RESULTS.md).
+The speech module checks consent before processing audio, validates model output, and saves a note only after explicit approval. On November 6, 2026, I reran its ten workflow tests and six HTTP service tests; all sixteen passed. These tests cover the local module. The Android app is not yet connected to this review-and-approval flow.
+
+The table below links each checked safeguard to its implementation and test. The [verification record](../tests/integration/RESULTS.md) separates this rerun from the November 5 live-model and Android emulator runs.
+
+## Speech safeguards tested
+
+Test methods are in [test_speech_workflow.py](../tests/unit/test_speech_workflow.py) and [test_speech_service.py](../tests/integration/test_speech_service.py).
+
+| Safeguard | Implementation | Test and observed result |
+|---|---|---|
+| Consent and local API access | [server.py](../app/speech/server.py), [workflow.py](../app/speech/workflow.py) | `test_consent_before_recording` and `test_auth_consent_and_origin_block_before_inference` passed: absent consent and unauthorized requests are rejected. |
+| Approval before saving | [workflow.py](../app/speech/workflow.py) | `test_approval_required_and_discard_terminal` passed: an unapproved or discarded draft cannot be exported. |
+| Review, save and deletion | [workflow.py](../app/speech/workflow.py) | `test_edit_save_delete_and_no_overwrite` passed: an edited note is saved, existing files are preserved, and deletion removes the export. |
+| Transcript correction | [workflow.py](../app/speech/workflow.py) | `test_transcript_edit_invalidates_prior_draft` passed: changing the transcript invalidates its previous summary. |
+| Unsupported output and contact details | [core.py](../app/speech/core.py) | `test_unsupported_and_sensitive_model_results_rejected` and `test_transcript_contacts_removed_before_summary` passed. These cover source-quote validation and email/phone patterns, not all personal information. |
+| Instruction overrides | [core.py](../app/speech/core.py) | `test_explicit_override_abstains_before_model_call` passed for the tested override pattern. This is limited coverage, not a general prompt-injection guarantee. |
+| Rate limits and model failures | [server.py](../app/speech/server.py), [demo.py](../app/speech/demo.py) | Busy/rate-window, model-failure/recovery and client retry/cancel tests passed with controlled model responses. No real provider outage was induced in this rerun. |
+
+The November 5 live test used a synthetic WAV with actual Whisper and Qwen inference, followed by editing, approval, file verification and deletion. Physical microphone capture and Android/glasses integration have not been verified.
+
+## Android application review
+
+The following findings describe the existing team application. Source inspection is identified separately from executed tests; missing controls remain open integration work.
 
 ## Data and access
 
@@ -27,7 +49,7 @@ The name and description can appear on the phone and glasses. Avoid sensitive de
 | Prompt injection | Neha's system prompt treats profile content as untrusted, with schema and regression fixtures. | Four contract tests and a separate live evaluation exercise this package. The Android display path currently bypasses an LLM, so these checks do not enforce field restrictions in the app. |
 | Schema validation | The prompt package has a JSON output schema and executable evaluator. | Integrate validation at any future model-call boundary. Roster loading uses org.json and needs additional corrupt-record handling. |
 | Low-confidence suppression | RosterStore returns no match below 0.60 similarity. LiveRecognizer waits for three consecutive matches. | Boundary and unknown-vector tests cover matching. The score is provisional. The photo preview has a separate single-match path. False matches and stale cards require device trials. |
-| Rate limits and fallback | The live loop waits about 500 ms. Recognition has a 30-second no-match timeout and an eight-second shown-name timeout. | These are local scheduling/session controls. A future inference service needs explicit rate-limit, timeout and retry handling. Existing display exceptions are logged; test recovery on hardware. |
+| Rate limits and fallback | The live loop waits about 500 ms. Recognition has a 30-second no-match timeout and an eight-second shown-name timeout. | These are local scheduling/session controls. The separate speech service implements request limits and error responses, but Android does not yet call it. Display recovery on hardware remains unverified. |
 | Sensitive use restrictions | Current roster code has name, description and embeddings; it has no attendance or grade connector. | Free-text descriptions can still contain prohibited information. Keep attendance, grades and inferred personal attributes out of profiles. The recognition path sends text to the display; automatic spoken names are outside its implemented behavior. |
 
 ## Known failure paths to verify
@@ -38,7 +60,7 @@ The name and description can appear on the phone and glasses. Avoid sensitive de
 4. **Legacy or corrupt storage.** RosterStore attempts to interpret the stored string as plaintext JSON if decryption fails. The encryption test checks ciphertext authentication directly. It does not establish that the whole loading path rejects every malformed or legacy record.
 5. **Approval and speech.** The local speech module implements consent, transcript correction, draft review and explicit approval-only export. Android roster integration still requires the [owner handoff](speech-integration-handoff.md). The terminal’s typed student ID and exported approval fields express supervised demo approval rather than authenticated student identity.
 
-These findings are implementation handoffs to the relevant owners. [Manual checks](../tests/integration/README.md#manual-checks) specify the expected safety behavior and how to record a failure.
+These issues remain unresolved in the reviewed Android source. [Manual checks](../tests/integration/README.md#manual-checks) specify the expected safety behavior and how to record a failure.
 
 ## Demonstration procedure
 

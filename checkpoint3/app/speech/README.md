@@ -2,7 +2,11 @@
 
 **Owner — Min Kim.**
 
-This module provides real local speech transcription, an extractive follow-up summary, transcript correction, student editing, approval-only saving, discard and deletion. Use the terminal demo on a laptop now. [Android integration requirements](../../docs/speech-integration-handoff.md) specify the changes Aman and Steven need to make to connect the team’s app.
+I implemented a laptop workflow that transcribes speech with Whisper, selects a short follow-up quote with Qwen, and lets the user correct, edit, approve or discard the result. Approved notes can be exported and deleted through the terminal client.
+
+**Verified:** ten workflow tests and six HTTP service tests passed again on November 6, 2026. The November 5 live-model run used a synthetic WAV and completed transcription, summary generation, review, saving and deletion. See [test results](../../tests/integration/RESULTS.md) for the commands and evidence limits.
+
+**Not yet verified:** physical microphone capture and the Android/glasses workflow. The module currently runs through the laptop client. [Android integration requirements](../../docs/speech-integration-handoff.md) list the UI and storage connections still needed.
 
 ## Files
 
